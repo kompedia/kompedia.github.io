@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jakub Barczyk — Tech Lead, IT Consultant, Engineering Trainer and University Lecturer based in Poland.">
+  <meta name="author" content="Jakub Barczyk">
+  <meta property="og:title" content="Jakub Barczyk · Tech Lead &amp; IT Consultant">
+  <meta property="og:description" content="Frontend tech lead, software architecture consultant, engineering trainer and university lecturer based in Poland.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jakubbarczyk.pl">
+  <meta property="og:image" content="https://jakubbarczyk.pl/img/glasses.svg">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Jakub Barczyk · Tech Lead &amp; IT Consultant">
+  <meta name="twitter:description" content="Frontend tech lead, software architecture consultant, engineering trainer and university lecturer based in Poland.">
+  <meta name="twitter:image" content="https://jakubbarczyk.pl/img/glasses.svg">
+  <title>Jakub Barczyk · Tech Lead &amp; IT Consultant</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- Skip navigation link for keyboard / screen-reader users (WCAG 2.4.1) -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <nav class="nav container" aria-label="Main navigation">
+
+      <!-- Logo -->
+      <a href="#hero" class="nav-logo" aria-label="Jakub Barczyk — go to top">
+        <img src="img/glasses.svg" class="logo-icon" alt="" aria-hidden="true">
+        <span class="logo-text">Jakub Barczyk</span>
+      </a>
+
+      <!-- Mobile hamburger toggle -->
+      <button class="nav-toggle" id="nav-toggle"
+              aria-expanded="false" aria-controls="nav-menu"
+              aria-label="Toggle navigation menu">
+        <span class="hamburger-bar" aria-hidden="true"></span>
+        <span class="hamburger-bar" aria-hidden="true"></span>
+        <span class="hamburger-bar" aria-hidden="true"></span>
+      </button>
+
+      <!-- Nav links -->
+      <ul class="nav-menu" id="nav-menu" role="list">
+        <li><a href="#about"     class="nav-link" data-en="About"     data-pl="O mnie">About</a></li>
+        <li><a href="#services"  class="nav-link" data-en="Services"  data-pl="Usługi">Services</a></li>
+        <li><a href="#portfolio" class="nav-link" data-en="Portfolio" data-pl="Portfolio">Portfolio</a></li>
+        <li><a href="#contact"   class="nav-link" data-en="Contact"   data-pl="Kontakt">Contact</a></li>
+      </ul>
+
+      <!-- Language switcher -->
+      <div class="lang-switcher" role="group" aria-label="Language selection">
+        <button class="lang-btn" id="lang-en" data-lang="en" aria-pressed="true"  lang="en">EN</button>
+        <span class="lang-sep" aria-hidden="true">|</span>
+        <button class="lang-btn" id="lang-pl" data-lang="pl" aria-pressed="false" lang="pl">PL</button>
+      </div>
+
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section id="hero" class="hero" aria-label="Introduction">
+      <div class="container hero-content">
+
+        <div class="hero-text">
+          <p class="hero-eyebrow"
+             data-en="Tech Lead · IT Consultant · Educator"
+             data-pl="Lider Technologiczny · Konsultant IT · Wykładowca">Tech Lead · IT Consultant · Educator</p>
+
+          <h1 class="hero-name">Jakub<br>Barczyk</h1>
+
+          <p class="hero-tagline"
+             data-en="Frontend Tech Lead &amp; IT Consultant with 10+ years of experience architecting web applications for enterprise clients (Dayforce, HSBC, Ryanair) and mentoring engineering teams."
+             data-pl="Frontend Tech Lead i Konsultant IT z ponad 10-letnim doświadczeniem w projektowaniu aplikacji dla liderów rynku (Dayforce, HSBC, Ryanair) oraz szkoleniu zespołów inżynieryjnych.">
+            Frontend Tech Lead &amp; IT Consultant with 10+ years of experience architecting web applications for enterprise clients (Dayforce, HSBC, Ryanair) and mentoring engineering teams.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#services" class="btn btn-primary"
+               data-en="What I do"
+               data-pl="Co robię">What I do</a>
+            <a href="#contact" class="btn btn-outline"
+               data-en="Get in touch"
+               data-pl="Skontaktuj się">Get in touch</a>
+          </div>
+        </div>
+
+        <!-- Decorative geometric visual — hidden from assistive tech -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="geo-circle-bg"></div>
+          <div class="geo-float-card glasses-3d-card">
+            <div class="glasses-3d-wrapper">
+              <!-- Depth layer 3 (Back outline shadow) -->
+              <svg class="glasses-layer glasses-layer-back" viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(0,640) scale(0.1,-0.1)">
+                  <path d="M9960 5774 c-25 -2 -106 -8 -180 -14 -352 -29 -767 -103 -1450 -260 -1060 -244 -1395 -295 -1930 -295 -479 1 -669 31 -1475 235 -214 54 -436 108 -492 119 -263 54 -939 156 -1248 188 -243 25 -811 25 -1015 0 -341 -42 -640 -103 -1270 -259 -223 -55 -512 -124 -643 -153 -131 -29 -241 -55 -243 -58 -3 -3 -6 -148 -7 -323 -3 -496 1 -509 270 -860 109 -142 177 -257 207 -348 9 -27 30 -112 46 -188 126 -588 305 -1192 521 -1756 107 -279 199 -425 374 -590 274 -259 730 -464 1205 -541 216 -35 365 -44 628 -38 626 15 1009 129 1390 414 103 77 304 273 396 387 222 274 434 635 621 1058 109 248 133 321 225 713 70 294 120 456 175 565 55 109 72 130 133 158 55 25 58 25 236 19 255 -10 249 -8 328 -87 55 -55 76 -86 126 -190 64 -132 91 -214 167 -505 168 -638 406 -1174 696 -1570 98 -133 357 -391 479 -477 705 -497 1693 -616 2488 -299 614 245 1043 709 1267 1371 70 206 113 374 210 811 137 620 197 833 276 993 63 126 107 180 239 285 79 64 98 151 81 386 -7 96 -6 177 1 258 18 197 -10 286 -109 339 -32 18 -102 38 -194 58 -151 31 -269 64 -599 169 -271 86 -425 122 -800 186 -480 81 -601 95 -860 99 -124 2 -245 2 -270 0z m-6185 -435 c226 -20 496 -78 761 -163 566 -183 884 -419 1017 -756 49 -125 67 -234 68 -415 0 -213 -36 -428 -121 -720 -73 -249 -249 -708 -360 -942 -310 -651 -793 -1072 -1414 -1234 -415 -108 -913 -94 -1386 38 -449 125 -790 448 -985 933 -88 219 -217 707 -284 1075 -95 519 -117 1069 -53 1310 113 422 450 655 1122 774 129 23 523 74 705 91 315 30 658 33 930 9z m6215 -5 c215 -18 455 -47 662 -79 586 -91 924 -250 1103 -519 116 -176 145 -292 152 -621 11 -492 -62 -987 -243 -1645 -69 -255 -102 -347 -178 -505 -103 -214 -208 -360 -359 -500 -177 -165 -375 -269 -637 -335 -783 -196 -1489 -85 -2033 321 -339 253 -597 614 -807 1130 -277 680 -390 1119 -377 1469 3 74 12 171 22 215 91 438 472 744 1173 944 327 93 515 125 867 145 110 6 478 -5 655 -20z"/>
+                </g>
+              </svg>
+              <!-- Depth layer 2 (Mid Sage gradient) -->
+              <svg class="glasses-layer glasses-layer-mid" viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(0,640) scale(0.1,-0.1)">
+                  <path d="M9960 5774 c-25 -2 -106 -8 -180 -14 -352 -29 -767 -103 -1450 -260 -1060 -244 -1395 -295 -1930 -295 -479 1 -669 31 -1475 235 -214 54 -436 108 -492 119 -263 54 -939 156 -1248 188 -243 25 -811 25 -1015 0 -341 -42 -640 -103 -1270 -259 -223 -55 -512 -124 -643 -153 -131 -29 -241 -55 -243 -58 -3 -3 -6 -148 -7 -323 -3 -496 1 -509 270 -860 109 -142 177 -257 207 -348 9 -27 30 -112 46 -188 126 -588 305 -1192 521 -1756 107 -279 199 -425 374 -590 274 -259 730 -464 1205 -541 216 -35 365 -44 628 -38 626 15 1009 129 1390 414 103 77 304 273 396 387 222 274 434 635 621 1058 109 248 133 321 225 713 70 294 120 456 175 565 55 109 72 130 133 158 55 25 58 25 236 19 255 -10 249 -8 328 -87 55 -55 76 -86 126 -190 64 -132 91 -214 167 -505 168 -638 406 -1174 696 -1570 98 -133 357 -391 479 -477 705 -497 1693 -616 2488 -299 614 245 1043 709 1267 1371 70 206 113 374 210 811 137 620 197 833 276 993 63 126 107 180 239 285 79 64 98 151 81 386 -7 96 -6 177 1 258 18 197 -10 286 -109 339 -32 18 -102 38 -194 58 -151 31 -269 64 -599 169 -271 86 -425 122 -800 186 -480 81 -601 95 -860 99 -124 2 -245 2 -270 0z m-6185 -435 c226 -20 496 -78 761 -163 566 -183 884 -419 1017 -756 49 -125 67 -234 68 -415 0 -213 -36 -428 -121 -720 -73 -249 -249 -708 -360 -942 -310 -651 -793 -1072 -1414 -1234 -415 -108 -913 -94 -1386 38 -449 125 -790 448 -985 933 -88 219 -217 707 -284 1075 -95 519 -117 1069 -53 1310 113 422 450 655 1122 774 129 23 523 74 705 91 315 30 658 33 930 9z m6215 -5 c215 -18 455 -47 662 -79 586 -91 924 -250 1103 -519 116 -176 145 -292 152 -621 11 -492 -62 -987 -243 -1645 -69 -255 -102 -347 -178 -505 -103 -214 -208 -360 -359 -500 -177 -165 -375 -269 -637 -335 -783 -196 -1489 -85 -2033 321 -339 253 -597 614 -807 1130 -277 680 -390 1119 -377 1469 3 74 12 171 22 215 91 438 472 744 1173 944 327 93 515 125 867 145 110 6 478 -5 655 -20z"/>
+                </g>
+              </svg>
+              <!-- Depth layer 1 (Front Indigo glow) -->
+              <svg class="glasses-layer glasses-layer-front" viewBox="0 0 1280 640" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(0,640) scale(0.1,-0.1)">
+                  <path d="M9960 5774 c-25 -2 -106 -8 -180 -14 -352 -29 -767 -103 -1450 -260 -1060 -244 -1395 -295 -1930 -295 -479 1 -669 31 -1475 235 -214 54 -436 108 -492 119 -263 54 -939 156 -1248 188 -243 25 -811 25 -1015 0 -341 -42 -640 -103 -1270 -259 -223 -55 -512 -124 -643 -153 -131 -29 -241 -55 -243 -58 -3 -3 -6 -148 -7 -323 -3 -496 1 -509 270 -860 109 -142 177 -257 207 -348 9 -27 30 -112 46 -188 126 -588 305 -1192 521 -1756 107 -279 199 -425 374 -590 274 -259 730 -464 1205 -541 216 -35 365 -44 628 -38 626 15 1009 129 1390 414 103 77 304 273 396 387 222 274 434 635 621 1058 109 248 133 321 225 713 70 294 120 456 175 565 55 109 72 130 133 158 55 25 58 25 236 19 255 -10 249 -8 328 -87 55 -55 76 -86 126 -190 64 -132 91 -214 167 -505 168 -638 406 -1174 696 -1570 98 -133 357 -391 479 -477 705 -497 1693 -616 2488 -299 614 245 1043 709 1267 1371 70 206 113 374 210 811 137 620 197 833 276 993 63 126 107 180 239 285 79 64 98 151 81 386 -7 96 -6 177 1 258 18 197 -10 286 -109 339 -32 18 -102 38 -194 58 -151 31 -269 64 -599 169 -271 86 -425 122 -800 186 -480 81 -601 95 -860 99 -124 2 -245 2 -270 0z m-6185 -435 c226 -20 496 -78 761 -163 566 -183 884 -419 1017 -756 49 -125 67 -234 68 -415 0 -213 -36 -428 -121 -720 -73 -249 -249 -708 -360 -942 -310 -651 -793 -1072 -1414 -1234 -415 -108 -913 -94 -1386 38 -449 125 -790 448 -985 933 -88 219 -217 707 -284 1075 -95 519 -117 1069 -53 1310 113 422 450 655 1122 774 129 23 523 74 705 91 315 30 658 33 930 9z m6215 -5 c215 -18 455 -47 662 -79 586 -91 924 -250 1103 -519 116 -176 145 -292 152 -621 11 -492 -62 -987 -243 -1645 -69 -255 -102 -347 -178 -505 -103 -214 -208 -360 -359 -500 -177 -165 -375 -269 -637 -335 -783 -196 -1489 -85 -2033 321 -339 253 -597 614 -807 1130 -277 680 -390 1119 -377 1469 3 74 12 171 22 215 91 438 472 744 1173 944 327 93 515 125 867 145 110 6 478 -5 655 -20z"/>
+                </g>
+              </svg>
+            </div>
+          </div>
+          <div class="geo-accent-sq"></div>
+          <div class="geo-dot-grid">
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Animated scroll indicator -->
+      <div class="hero-scroll" aria-hidden="true">
+        <span class="scroll-line"></span>
+      </div>
+    </section>
+
+
+    <section id="about" class="section about" aria-labelledby="about-heading">
+      <div class="container">
+
+        <header class="section-header reveal">
+          <span class="section-label"
+                data-en="About me"
+                data-pl="O mnie">About me</span>
+          <h2 class="section-title" id="about-heading"
+              data-en="Architecting software. Mentoring teams. Delivering accessibility."
+              data-pl="Projektowanie oprogramowania. Mentoring zespołów. Dostępność cyfrowa.">
+            Architecting software. Mentoring teams.<br>Delivering accessibility.
+          </h2>
+        </header>
+
+        <div class="about-grid">
+
+          <div class="about-photo-col reveal">
+            <div class="about-photo-frame">
+              <div class="about-photo-placeholder" role="img"
+                   aria-label="Portrait placeholder — Jakub Barczyk">
+                <svg viewBox="0 0 200 260" fill="none" xmlns="http://www.w3.org/2000/svg"
+                     aria-hidden="true">
+                  <circle cx="100" cy="88" r="52" fill="#C7D2FE"/>
+                  <path d="M10 230 Q100 168 190 230 L190 270 L10 270 Z" fill="#C7D2FE"/>
+                </svg>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-text-col reveal">
+            <p class="about-lead"
+               data-en="I'm Jakub Barczyk — Frontend Tech Lead &amp; IT Consultant with 10+ years of experience building high-scale web platforms (Angular, React, Vue), leading cross-functional Agile teams, and enforcing WCAG accessibility compliance."
+               data-pl="Nazywam się Jakub Barczyk — jestem Frontend Tech Leadem i Konsultantem IT z ponad 10-letnim doświadczeniem w budowaniu skalowalnych aplikacji webowych (Angular, React, Vue), kierowaniu zespołami Agile oraz wdrożeniach dostępności WCAG.">
+              I'm Jakub Barczyk — Frontend Tech Lead &amp; IT Consultant with 10+ years of experience building high-scale web platforms (Angular, React, Vue), leading cross-functional Agile teams, and enforcing WCAG accessibility compliance.
+            </p>
+            <p class="about-body"
+               data-en="I partner with businesses to eliminate technical debt, architect micro-frontends, and roadmap key products. Additionally, as a former University Lecturer at Kozminski University and WSB University, I design and deliver hands-on corporate engineering training and 1-on-1 mentoring."
+               data-pl="Współpracuję z firmami przy eliminacji długu technologicznego, architekturze mikrofrontendowej i planowaniu rozwoju produktów. Jako były wykładowca akademicki (Akademia Leona Koźmińskiego, Uniwersytet WSB Merito), prowadzę szkolenia technologiczne dla firm oraz indywidualny mentoring.">
+              I partner with businesses to eliminate technical debt, architect micro-frontends, and roadmap key products. Additionally, as a former University Lecturer at Kozminski University and WSB University, I design and deliver hands-on corporate engineering training and 1-on-1 mentoring.
+            </p>
+
+            <dl class="about-stats reveal-stagger">
+              <div class="stat">
+                <dt class="stat-label"
+                    data-en="Years of Experience"
+                    data-pl="Lat doświadczenia">Years of Experience</dt>
+                <dd class="stat-number">10+</dd>
+              </div>
+              <div class="stat">
+                <dt class="stat-label"
+                    data-en="Enterprise Platforms"
+                    data-pl="Platformy Enterprise">Enterprise Platforms</dt>
+                <dd class="stat-number">500k+</dd>
+              </div>
+              <div class="stat">
+                <dt class="stat-label"
+                    data-en="Engineers &amp; Students Mentored"
+                    data-pl="Przeszkolonych inżynierów i studentów">Engineers &amp; Students Mentored</dt>
+                <dd class="stat-number">300+</dd>
+              </div>
+            </dl>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+
+    <section id="services" class="section services" aria-labelledby="services-heading">
+      <div class="container">
+
+        <header class="section-header reveal">
+          <span class="section-label"
+                data-en="Services"
+                data-pl="Usługi">Services</span>
+          <h2 class="section-title" id="services-heading"
+              data-en="How I can help you"
+              data-pl="Jak mogę Ci pomóc">How I can help you</h2>
+        </header>
+
+        <ul class="services-grid reveal-stagger" role="list">
+
+          <li class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="6" y="10" width="36" height="24" rx="2.5"
+                      stroke="currentColor" stroke-width="2"/>
+                <path d="M16 38h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M24 34v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M14 20l5 4-5 4" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M23 28h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="service-name"
+                data-en="Tech Leadership &amp; Consulting"
+                data-pl="Tech Leadership i Konsulting">Tech Leadership &amp; Consulting</h3>
+            <p class="service-desc"
+               data-en="Architecture reviews, technical debt elimination, micro-frontends implementation, and WCAG accessibility compliance for enterprise applications."
+               data-pl="Przeglądy architektury, eliminacja długu technologicznego, wdrażanie mikrofrontendów oraz zgodność z wytycznymi dostępności WCAG.">
+              Architecture reviews, technical debt elimination, micro-frontends implementation, and WCAG accessibility compliance for enterprise applications.
+            </p>
+          </li>
+
+          <li class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17 16l-7 8 7 8" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M31 16l7 8-7 8" stroke="currentColor" stroke-width="2"
+                      stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M27 12l-6 24" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="service-name"
+                data-en="Frontend Engineering"
+                data-pl="Inżynieria Frontendowa">Frontend Engineering</h3>
+            <p class="service-desc"
+               data-en="Modern JavaScript &amp; TypeScript solutions (Vue, Angular, React) with reusable component libraries, AI-assisted workflows, and robust state management."
+               data-pl="Nowoczesne aplikacje JavaScript i TypeScript (Vue, Angular, React), autorskie biblioteki komponentów UI, przepływy pracy z AI oraz zaawansowane zarządzanie stanem.">
+              Modern JavaScript &amp; TypeScript solutions (Vue, Angular, React) with reusable component libraries, AI-assisted workflows, and robust state management.
+            </p>
+          </li>
+
+          <li class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Whiteboard Frame -->
+                <rect x="7" y="8" width="34" height="24" rx="3"
+                      stroke="currentColor" stroke-width="2"/>
+                <!-- Bottom Tray -->
+                <path d="M11 32h26" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <!-- Clean Tripod Easel Stand Legs -->
+                <path d="M16 32l-5 11M32 32l5 11M24 32v11"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <!-- Content presentation lines -->
+                <path d="M13 16h14M13 22h22"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="service-name"
+                data-en="Corporate Workshops &amp; Training"
+                data-pl="Szkolenia i Warsztaty Firmowe">Corporate Workshops &amp; Training</h3>
+            <p class="service-desc"
+               data-en="Customised engineering workshops covering TypeScript, modern frontend frameworks, Test-Driven Development (TDD), and clean code architecture."
+               data-pl="Dedykowane warsztaty technologiczne z zakresu TypeScriptu, nowoczesnych frameworków frontendowych, TDD (Test-Driven Development) i architektury czystego kodu.">
+              Customised engineering workshops covering TypeScript, modern frontend frameworks, Test-Driven Development (TDD), and clean code architecture.
+            </p>
+          </li>
+
+          <li class="service-card">
+            <div class="service-icon" aria-hidden="true">
+              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Head (Center 24, 15, Radius 7 -> Y bounds 8 to 22) -->
+                <circle cx="24" cy="15" r="7" stroke="currentColor" stroke-width="2"/>
+                <!-- Separate Shoulder Arc starting at Y=27 leaving a 5px gap -->
+                <path d="M9 40c0-7.732 6.716-14 15-14s15 6.268 15 14"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="service-name"
+                data-en="1-on-1 Developer Mentoring"
+                data-pl="Mentoring Indywidualny">1-on-1 Developer Mentoring</h3>
+            <p class="service-desc"
+               data-en="Personalized technical coaching for software engineers and leads — covering career acceleration, system design, and frontend mastery."
+               data-pl="Spersonalizowany coaching techniczny dla programistów i liderów — obejmujący rozwój kariery, projektowanie systemów oraz optymalizację kodu.">
+              Personalized technical coaching for software engineers and leads — covering career acceleration, system design, and frontend mastery.
+            </p>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+
+    <section id="portfolio" class="section portfolio" aria-labelledby="portfolio-heading">
+      <div class="container">
+
+        <header class="section-header reveal">
+          <span class="section-label"
+                data-en="Experience &amp; Track Record"
+                data-pl="Doświadczenie i Projekty">Experience &amp; Track Record</span>
+          <h2 class="section-title" id="portfolio-heading"
+              data-en="Proven Track Record"
+              data-pl="Wybrane Projekty i Doświadczenie">Proven Track Record</h2>
+        </header>
+
+        <ul class="portfolio-grid reveal-stagger" role="list">
+
+          <li class="portfolio-card">
+            <div class="portfolio-card-visual" aria-hidden="true">
+              <div class="portfolio-card-bg portfolio-card-bg--1"></div>
+              <div class="portfolio-card-pattern"></div>
+            </div>
+            <div class="portfolio-card-body">
+              <span class="portfolio-tag"
+                    data-en="Dayforce · Tech Lead"
+                    data-pl="Dayforce · Tech Lead">Dayforce · Tech Lead</span>
+              <h3 class="portfolio-card-title"
+                  data-en="Vue Learning Platform (500k+ Users)"
+                  data-pl="Platforma Szkoleniowa Vue (500k+ Użytkowników)">Vue Learning Platform (500k+ Users)</h3>
+              <p class="portfolio-card-desc"
+                 data-en="Driving development of a Vue-based learning platform for 500k+ users. Leveraging AI-guided workflows, roadmapping features, and enforcing WCAG compliance."
+                 data-pl="Prowadzenie rozwoju platformy edukacyjnej w oparciu o Vue dla ponad 500 tys. użytkowników. Wykorzystanie AI, planowanie rozwoju i pełna zgodność z WCAG.">
+                Driving development of a Vue-based learning platform for 500k+ users. Leveraging AI-guided workflows, roadmapping features, and enforcing WCAG compliance.
+              </p>
+            </div>
+          </li>
+
+          <li class="portfolio-card">
+            <div class="portfolio-card-visual" aria-hidden="true">
+              <div class="portfolio-card-bg portfolio-card-bg--2"></div>
+              <div class="portfolio-card-pattern"></div>
+            </div>
+            <div class="portfolio-card-body">
+              <span class="portfolio-tag"
+                    data-en="UTA Edenred · Frontend Tech Lead"
+                    data-pl="UTA Edenred · Frontend Tech Lead">UTA Edenred · Frontend Tech Lead</span>
+              <h3 class="portfolio-card-title"
+                  data-en="Corporate Angular Portal (90k+ Clients)"
+                  data-pl="Portal Korporacyjny Angular (90k+ Klientów)">Corporate Angular Portal (90k+ Clients)</h3>
+              <p class="portfolio-card-desc"
+                 data-en="Led frontend engineering for an enterprise Angular portal serving 90k+ corporate clients. Refactored legacy debt, managed technical risks, and mentored developers."
+                 data-pl="Kierowanie inżynierią frontendową portalu Angular dla 90k+ klientów biznesowych. Redukcja długu technologicznego, zarządzanie ryzykiem i mentoring zespołu.">
+                Led frontend engineering for an enterprise Angular portal serving 90k+ corporate clients. Refactored legacy debt, managed technical risks, and mentored developers.
+              </p>
+            </div>
+          </li>
+
+          <li class="portfolio-card">
+            <div class="portfolio-card-visual" aria-hidden="true">
+              <div class="portfolio-card-bg portfolio-card-bg--3"></div>
+              <div class="portfolio-card-pattern"></div>
+            </div>
+            <div class="portfolio-card-body">
+              <span class="portfolio-tag"
+                    data-en="HSBC · Front End Lead"
+                    data-pl="HSBC · Front End Lead">HSBC · Front End Lead</span>
+              <h3 class="portfolio-card-title"
+                  data-en="Micro-Frontends Private Banking Platform"
+                  data-pl="Platforma Bankowości Prywatnej w Mikroforyntendach">Micro-Frontends Private Banking Platform</h3>
+              <p class="portfolio-card-desc"
+                 data-en="Authored a micro-frontends architecture in React for HSBC Private Banking. Enforced WCAG compliance and co-authored shared UI component libraries."
+                 data-pl="Stworzenie architektury mikrofrontendowej w React dla platformy bankowości prywatnej HSBC. Wdrożenie dostępności WCAG i stworzenie wspólnej biblioteki komponentów.">
+                Authored a micro-frontends architecture in React for HSBC Private Banking. Enforced WCAG compliance and co-authored shared UI component libraries.
+              </p>
+            </div>
+          </li>
+
+          <li class="portfolio-card">
+            <div class="portfolio-card-visual" aria-hidden="true">
+              <div class="portfolio-card-bg portfolio-card-bg--1"></div>
+              <div class="portfolio-card-pattern"></div>
+            </div>
+            <div class="portfolio-card-body">
+              <span class="portfolio-tag"
+                    data-en="Ryanair · Front End Engineer &amp; Lead"
+                    data-pl="Ryanair · Front End Engineer &amp; Lead">Ryanair · Front End Engineer &amp; Lead</span>
+              <h3 class="portfolio-card-title"
+                  data-en="Ryanair Rooms Platform (400k Properties)"
+                  data-pl="Platforma Ryanair Rooms (400k Obiektów)">Ryanair Rooms Platform (400k Properties)</h3>
+              <p class="portfolio-card-desc"
+                 data-en="Developed the high-traffic Ryanair Rooms platform in Angular featuring 400k global properties. Led company-wide frontend workshops and mentored engineers."
+                 data-pl="Rozwój wysokonatężeniowej platformy Ryanair Rooms w Angular (400 tys. obiektów). Prowadzenie warsztatów technologicznych w całej firmie i kierowanie zespołem.">
+                Developed the high-traffic Ryanair Rooms platform in Angular featuring 400k global properties. Led company-wide frontend workshops and mentored engineers.
+              </p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+
+
+    <section id="contact" class="section contact" aria-labelledby="contact-heading">
+      <div class="container">
+        <div class="contact-inner">
+
+          <div class="contact-intro-col reveal">
+            <span class="section-label"
+                  data-en="Contact"
+                  data-pl="Kontakt">Contact</span>
+            <h2 class="section-title contact-title" id="contact-heading"
+                data-en="Let's talk"
+                data-pl="Porozmawiajmy">Let's talk</h2>
+            <p class="contact-intro-text"
+               data-en="Whether you're looking for a technical lead, software architecture advice, customized corporate workshops, or developer mentoring — I'd love to connect."
+               data-pl="Niezależnie od tego, czy szukasz Lidera Technologicznego, doradztwa w architekturze oprogramowania, warsztatów firmowych czy mentoringu — chętnie porozmawiam.">
+              Whether you're looking for a technical lead, software architecture advice, customized corporate workshops, or developer mentoring — I'd love to connect.
+            </p>
+
+            <ul class="contact-details" role="list">
+              <li class="contact-detail-item">
+                <span class="contact-detail-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                          stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <a href="mailto:jakub@jakubbarczyk.pl" class="contact-detail-link">
+                  jakub@jakubbarczyk.pl
+                </a>
+              </li>
+              <li class="contact-detail-item">
+                <span class="contact-detail-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+                          stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.75"/>
+                  </svg>
+                </span>
+                <a href="https://www.linkedin.com/in/jakubbarczyk/"
+                   class="contact-detail-link"
+                   target="_blank" rel="noopener noreferrer"
+                   data-en="LinkedIn Profile"
+                   data-pl="Profil LinkedIn">LinkedIn Profile</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="contact-form-col reveal">
+            <form class="contact-form" id="contact-form" novalidate
+                  aria-label="Contact form">
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label for="contact-name"
+                         data-en="Name"
+                         data-pl="Imię i nazwisko">Name</label>
+                  <input type="text" id="contact-name" name="name"
+                         autocomplete="name" required aria-required="true"
+                         data-en-placeholder="Your name"
+                         data-pl-placeholder="Twoje imię i nazwisko"
+                         placeholder="Your name">
+                  <span class="form-error" role="alert" aria-live="polite"></span>
+                </div>
+                <div class="form-group">
+                  <label for="contact-email"
+                         data-en="Email"
+                         data-pl="E-mail">Email</label>
+                  <input type="email" id="contact-email" name="email"
+                         autocomplete="email" required aria-required="true"
+                         data-en-placeholder="your@email.com"
+                         data-pl-placeholder="twoj@email.pl"
+                         placeholder="your@email.com">
+                  <span class="form-error" role="alert" aria-live="polite"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-subject"
+                       data-en="Subject"
+                       data-pl="Temat">Subject</label>
+                <input type="text" id="contact-subject" name="subject"
+                       required aria-required="true"
+                       data-en-placeholder="How can I help?"
+                       data-pl-placeholder="W czym mogę pomóc?"
+                       placeholder="How can I help?">
+                <span class="form-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="contact-message"
+                       data-en="Message"
+                       data-pl="Wiadomość">Message</label>
+                <textarea id="contact-message" name="message"
+                          rows="5" required aria-required="true"
+                          data-en-placeholder="Tell me about your project or training needs..."
+                          data-pl-placeholder="Opowiedz o swoim projekcie lub potrzebach szkoleniowych..."
+                          placeholder="Tell me about your project or training needs..."></textarea>
+                <span class="form-error" role="alert" aria-live="polite"></span>
+              </div>
+
+              <div class="form-success" id="form-success" role="status" aria-live="polite" hidden>
+                <span data-en="Your email client has been opened with the message pre-filled."
+                      data-pl="Otwarto klienta poczty e-mail z wstępnie wypełnioną wiadomością.">
+                  Your email client has been opened with the message pre-filled.
+                </span>
+              </div>
+
+              <button type="submit" class="btn btn-primary"
+                      data-en="Send message"
+                      data-pl="Wyślij wiadomość">Send message</button>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container footer-inner">
+
+      <a href="#hero" class="nav-logo footer-logo" aria-label="Jakub Barczyk — back to top">
+        <img src="img/glasses.svg" class="logo-icon logo-icon--inverted" alt="" aria-hidden="true">
+        <span class="logo-text">Jakub Barczyk</span>
+      </a>
+
+      <p class="footer-copy">
+        <span data-en="&copy; 2026 Jakub Barczyk. All rights reserved."
+              data-pl="&copy; 2026 Jakub Barczyk. Wszelkie prawa zastrzeżone.">
+          &copy; 2026 Jakub Barczyk. All rights reserved.
+        </span>
+      </p>
+
+      <nav class="footer-social" aria-label="Social links">
+        <a href="mailto:jakub@jakubbarczyk.pl"
+           class="footer-social-link" aria-label="Send email to Jakub Barczyk">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                  stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/jakubbarczyk/"
+           class="footer-social-link" aria-label="Jakub Barczyk on LinkedIn"
+           target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"
+                  stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="4" cy="4" r="2" stroke="currentColor" stroke-width="1.75"/>
+          </svg>
+        </a>
+        <a href="https://github.com/jakubbarczyk"
+           class="footer-social-link" aria-label="Jakub Barczyk on GitHub"
+           target="_blank" rel="noopener noreferrer">
+          <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"
+                  stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+      </nav>
+
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
