@@ -2,12 +2,58 @@
   'use strict';
 
   const STORAGE_KEY = 'jb-lang';
-  let currentLang = localStorage.getItem(STORAGE_KEY) || 'en';
+  let currentLang = localStorage.getItem(STORAGE_KEY) || 'pl';
 
-  /**
-   * Set all translatable text and placeholders on the page.
-   * @param {string} lang — 'en' | 'pl'
-   */
+  const TEMPLATE_CONTAINERS = [
+    { containerId: 'hero-text-container', templateId: 'tpl-hero-text-en' },
+    { containerId: 'about-header-container', templateId: 'tpl-about-header-en' },
+    { containerId: 'about-text-container', templateId: 'tpl-about-text-en' },
+    { containerId: 'services-header-container', templateId: 'tpl-services-header-en' },
+    { containerId: 'services-grid-container', templateId: 'tpl-services-grid-en' },
+    { containerId: 'portfolio-header-container', templateId: 'tpl-portfolio-header-en' },
+    { containerId: 'portfolio-grid-container', templateId: 'tpl-portfolio-grid-en' },
+    { containerId: 'contact-intro-container', templateId: 'tpl-contact-intro-en' },
+  ];
+
+  // Cache initial Polish HTML content from default markup
+  const plContentCache = {};
+  TEMPLATE_CONTAINERS.forEach(({ containerId }) => {
+    const el = document.getElementById(containerId);
+    if (el) {
+      plContentCache[containerId] = el.innerHTML;
+    }
+  });
+
+  const STATIC_TEXTS = {
+    'nav-about': { en: 'About', pl: 'O mnie' },
+    'nav-services': { en: 'Services', pl: 'Usługi' },
+    'nav-portfolio': { en: 'Portfolio', pl: 'Portfolio' },
+    'nav-contact': { en: 'Contact', pl: 'Kontakt' },
+    'label-name': { en: 'Name', pl: 'Imię i nazwisko' },
+    'label-email': { en: 'Email', pl: 'E-mail' },
+    'label-subject': { en: 'Subject', pl: 'Temat' },
+    'label-message': { en: 'Message', pl: 'Wiadomość' },
+    'btn-submit': { en: 'Send message', pl: 'Wyślij wiadomość' },
+    'form-success-text': {
+      en: 'Your email client has been opened with the message pre-filled.',
+      pl: 'Otwarto klienta poczty e-mail z wstępnie wypełnioną wiadomością.'
+    },
+    'footer-copy-text': {
+      en: '© 2026 Jakub Barczyk. All rights reserved.',
+      pl: '© 2026 Jakub Barczyk. Wszelkie prawa zastrzeżone.'
+    }
+  };
+
+  const PLACEHOLDERS = {
+    'contact-name': { en: 'Your name', pl: 'Twoje imię i nazwisko' },
+    'contact-email': { en: 'your@email.com', pl: 'twoj@email.pl' },
+    'contact-subject': { en: 'How can I help?', pl: 'W czym mogę pomóc?' },
+    'contact-message': {
+      en: 'Tell me about your project or training needs...',
+      pl: 'Opowiedz o swoim projekcie lub potrzebach szkoleniowych...'
+    }
+  };
+
   const setLanguage = (lang) => {
     currentLang = lang;
     localStorage.setItem(STORAGE_KEY, lang);
@@ -24,41 +70,70 @@
       if (metaDesc) metaDesc.setAttribute('content', 'Jakub Barczyk — Tech Lead, IT Consultant, Engineering Trainer and University Lecturer based in Poland.');
     }
 
-    // Text content — elements with data-en / data-pl
-    document.querySelectorAll('[data-en]').forEach((el) => {
-      const text = lang === 'pl' ? el.dataset.pl : el.dataset.en;
-      if (text !== undefined && text !== '') el.textContent = text;
+    // Render section contents (EN from templates, PL from cached default markup)
+    TEMPLATE_CONTAINERS.forEach(({ containerId, templateId }) => {
+      const container = document.getElementById(containerId);
+      if (!container) return;
+
+      if (lang === 'en') {
+        const tpl = document.getElementById(templateId);
+        if (tpl) {
+          container.innerHTML = '';
+          container.appendChild(tpl.content.cloneNode(true));
+        }
+      } else if (plContentCache[containerId]) {
+        container.innerHTML = plContentCache[containerId];
+      }
     });
 
-    // Input / textarea placeholders
-    document.querySelectorAll('[data-en-placeholder]').forEach((el) => {
-      const ph = lang === 'pl' ? el.dataset.plPlaceholder : el.dataset.enPlaceholder;
-      if (ph !== undefined) el.placeholder = ph;
+    // Update static text elements
+    Object.entries(STATIC_TEXTS).forEach(([id, translations]) => {
+      const el = document.getElementById(id);
+      if (el && translations[lang]) {
+        el.textContent = translations[lang];
+      }
+    });
+
+    // Update form placeholders
+    Object.entries(PLACEHOLDERS).forEach(([id, translations]) => {
+      const el = document.getElementById(id);
+      if (el && translations[lang]) {
+        el.placeholder = translations[lang];
+      }
     });
 
     // Update lang-btn aria-pressed states
-    document.querySelectorAll('.lang-btn').forEach((btn) => {
-      const active = btn.dataset.lang === lang;
-      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    document.querySelectorAll('.lang-btn').forEach((button) => {
+      const active = button.dataset.lang === lang;
+      button.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
+
+    // Re-observe any newly injected reveal elements
+    if (typeof revealObserver !== 'undefined') {
+      document.querySelectorAll('.reveal:not(.is-revealed)').forEach((el) => revealObserver.observe(el));
+      document.querySelectorAll('.reveal-stagger:not(.is-revealed)').forEach((el) => revealObserver.observe(el));
+    }
   };
-
-  // Initialise on load
-  setLanguage(currentLang);
-
-  // Bind lang buttons
-  document.querySelectorAll('.lang-btn').forEach((btn) => {
-    btn.addEventListener('click', () => setLanguage(btn.dataset.lang));
-  });
 
   const header = document.querySelector('.site-header');
 
+  let scrollTicking = false;
+  const updateScroll = () => {
+    if (header) {
+      header.classList.toggle('scrolled', window.scrollY > 32);
+    }
+    scrollTicking = false;
+  };
+
   const onScroll = () => {
-    header.classList.toggle('scrolled', window.scrollY > 32);
+    if (!scrollTicking) {
+      requestAnimationFrame(updateScroll);
+      scrollTicking = true;
+    }
   };
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll(); // run once on load
+  requestAnimationFrame(updateScroll);
 
   const navToggle = document.getElementById('nav-toggle');
   const navMenu   = document.getElementById('nav-menu');
@@ -67,7 +142,7 @@
     navToggle.setAttribute('aria-expanded', 'true');
     navToggle.classList.add('is-open');
     navMenu.classList.add('is-open');
-    document.body.style.overflow = 'hidden'; // prevent scroll behind overlay
+    document.body.style.overflow = 'hidden';
   };
 
   const closeNav = () => {
@@ -132,6 +207,14 @@
 
   revealEls.forEach((el) => revealObserver.observe(el));
   revealStagger.forEach((el) => revealObserver.observe(el));
+
+  // Initialise language on load
+  setLanguage(currentLang);
+
+  // Bind lang buttons
+  document.querySelectorAll('.lang-btn').forEach((button) => {
+    button.addEventListener('click', () => setLanguage(button.dataset.lang));
+  });
 
   const form        = document.getElementById('contact-form');
   const formSuccess = document.getElementById('form-success');
@@ -201,12 +284,9 @@
       // Show success notice
       if (formSuccess) {
         formSuccess.removeAttribute('hidden');
-        const successText = formSuccess.querySelector('[data-en]');
-        if (successText) {
-          successText.textContent =
-            currentLang === 'pl'
-              ? successText.dataset.pl
-              : successText.dataset.en;
+        const successText = document.getElementById('form-success-text');
+        if (successText && STATIC_TEXTS['form-success-text']) {
+          successText.textContent = STATIC_TEXTS['form-success-text'][currentLang];
         }
       }
     });
