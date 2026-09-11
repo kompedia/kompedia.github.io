@@ -32,11 +32,11 @@ jobs:
         run: |
           npm install -g html-minifier-terser terser csso-cli
 
-      - name: Minify Assets & Optimize Images
+      - name: Minify Assets
         run: |
           # Minify code assets in-place
-          terser js/main.js --compress --mangle -o js/main.js
-          csso css/styles.css -o css/styles.css
+          terser scripts.js --compress --mangle -o scripts.js
+          csso styles.css -o styles.css
           html-minifier-terser --collapse-whitespace --remove-comments --minify-js true --minify-css true index.html -o index.html
 
       - name: Setup Pages
