@@ -1,4 +1,6 @@
 :root {
+  color-scheme: light;
+
   /* Brand colors */
   --indigo:       #3730A3; /* 8.7:1 on white — AAA */
   --indigo-mid:   #4F46E5; /* 5.1:1 on white — AA  */
@@ -11,6 +13,10 @@
   --sage-light:   #BBD9BC;
   --sage-faint:   #E8F4E8;
   --sage-xfaint:  #F0F7F0;
+
+  /* Feedback colors */
+  --error:        #B91C1C;
+  --error-faint:  rgba(185, 28, 28, 0.10);
 
   /* Neutral grays */
   --white:      #FFFFFF;
@@ -77,6 +83,11 @@ html {
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   hanging-punctuation: first last;
+
+  &[lang="pl"] .lang-en,
+  &[lang="en"] .lang-pl {
+    display: none;
+  }
 }
 
 body {
@@ -979,15 +990,15 @@ textarea { resize: vertical; }
 
 .form-group input[aria-invalid="true"],
 .form-group textarea[aria-invalid="true"] {
-  border-color: #B91C1C;
-  box-shadow: 0 0 0 3px rgba(185,28,28,.10);
+  border-color: var(--error);
+  box-shadow: 0 0 0 3px var(--error-faint);
 }
 
 .form-group textarea { min-height: 150px; }
 
 .form-error {
   font-size: var(--text-xs);
-  color: #B91C1C;
+  color: var(--error);
   min-height: 1em;
   line-height: 1.4;
 }
@@ -1125,8 +1136,8 @@ textarea { resize: vertical; }
 }
 
 
-/* Responsive — mobile (max 767px) */
-@media (max-width: 767px) {
+/* Responsive — mobile (max 768px) */
+@media (max-width: 768px) {
   /* Show hamburger, hide desktop nav */
   .nav-toggle { display: flex; }
 
@@ -1215,5 +1226,5 @@ textarea { resize: vertical; }
   .section { padding-block: 2rem; }
 
   body { color: #000; }
-  a[href]::after { content: " (" attr(href) ")"; }
+  a[href^="http"]::after { content: " (" attr(href) ")"; }
 }

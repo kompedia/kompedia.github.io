@@ -1,118 +1,55 @@
 (() => {
   'use strict';
 
-  const STORAGE_KEY = 'jb-lang';
-  let currentLang = localStorage.getItem(STORAGE_KEY) || 'pl';
-
-  const TEMPLATE_CONTAINERS = [
-    { containerId: 'hero-text-container', templateId: 'tpl-hero-text-en' },
-    { containerId: 'about-header-container', templateId: 'tpl-about-header-en' },
-    { containerId: 'about-text-container', templateId: 'tpl-about-text-en' },
-    { containerId: 'services-header-container', templateId: 'tpl-services-header-en' },
-    { containerId: 'services-grid-container', templateId: 'tpl-services-grid-en' },
-    { containerId: 'portfolio-header-container', templateId: 'tpl-portfolio-header-en' },
-    { containerId: 'portfolio-grid-container', templateId: 'tpl-portfolio-grid-en' },
-    { containerId: 'contact-intro-container', templateId: 'tpl-contact-intro-en' },
-  ];
-
-  // Cache initial Polish HTML content from default markup
-  const plContentCache = {};
-  TEMPLATE_CONTAINERS.forEach(({ containerId }) => {
-    const el = document.getElementById(containerId);
-    if (el) {
-      plContentCache[containerId] = el.innerHTML;
-    }
-  });
-
-  const STATIC_TEXTS = {
-    'nav-about': { en: 'About', pl: 'O mnie' },
-    'nav-services': { en: 'Services', pl: 'Usługi' },
-    'nav-portfolio': { en: 'Portfolio', pl: 'Portfolio' },
-    'nav-contact': { en: 'Contact', pl: 'Kontakt' },
-    'label-name': { en: 'Name', pl: 'Imię i nazwisko' },
-    'label-email': { en: 'Email', pl: 'E-mail' },
-    'label-subject': { en: 'Subject', pl: 'Temat' },
-    'label-message': { en: 'Message', pl: 'Wiadomość' },
-    'btn-submit': { en: 'Send message', pl: 'Wyślij wiadomość' },
-    'form-success-text': {
-      en: 'Your email client has been opened with the message pre-filled.',
-      pl: 'Otwarto klienta poczty e-mail z wstępnie wypełnioną wiadomością.'
+  const TRANSLATIONS = {
+    pl: {
+      title: 'Jakub Barczyk · Lider Technologiczny i Konsultant IT',
+      meta: 'Jakub Barczyk — Lider Technologiczny, Konsultant IT, Trener Inżynierii i Wykładowca Akademicki z Polski.',
+      name: 'Proszę podać imię i nazwisko.',
+      email: 'Proszę podać adres e-mail.',
+      emailInvalid: 'Proszę podać poprawny adres e-mail.',
+      subject: 'Proszę podać temat.',
+      message: 'Proszę wpisać wiadomość.',
+      fallback: 'To pole jest wymagane.',
     },
-    'footer-copy-text': {
-      en: '© 2026 Jakub Barczyk. All rights reserved.',
-      pl: '© 2026 Jakub Barczyk. Wszelkie prawa zastrzeżone.'
-    }
+    en: {
+      title: 'Jakub Barczyk · Tech Lead & IT Consultant',
+      meta: 'Jakub Barczyk — Tech Lead, IT Consultant, Engineering Trainer and University Lecturer based in Poland.',
+      name: 'Please enter your name.',
+      email: 'Please enter your email.',
+      emailInvalid: 'Please enter a valid email address.',
+      subject: 'Please enter a subject.',
+      message: 'Please enter a message.',
+      fallback: 'This field is required.',
+    },
   };
 
-  const PLACEHOLDERS = {
-    'contact-name': { en: 'Your name', pl: 'Twoje imię i nazwisko' },
-    'contact-email': { en: 'your@email.com', pl: 'twoj@email.pl' },
-    'contact-subject': { en: 'How can I help?', pl: 'W czym mogę pomóc?' },
-    'contact-message': {
-      en: 'Tell me about your project or training needs...',
-      pl: 'Opowiedz o swoim projekcie lub potrzebach szkoleniowych...'
-    }
-  };
+  const STORAGE_KEY = 'jb-lang';
+  let currentLang = 'pl';
+  try {
+    currentLang = localStorage.getItem(STORAGE_KEY) || 'pl';
+  } catch {}
 
   const setLanguage = (lang) => {
-    currentLang = lang;
-    localStorage.setItem(STORAGE_KEY, lang);
-    document.documentElement.lang = lang;
+    currentLang = lang === 'en' ? 'en' : 'pl';
+    try {
+      localStorage.setItem(STORAGE_KEY, currentLang);
+    } catch {}
+    document.documentElement.lang = currentLang;
 
+    const t = TRANSLATIONS[currentLang];
     // Update document title and meta description for accessibility & SEO
-    if (lang === 'pl') {
-      document.title = 'Jakub Barczyk · Lider Technologiczny i Konsultant IT';
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) metaDesc.setAttribute('content', 'Jakub Barczyk — Lider Technologiczny, Konsultant IT, Trener Inżynierii i Wykładowca Akademicki z Polski.');
-    } else {
-      document.title = 'Jakub Barczyk · Tech Lead & IT Consultant';
-      const metaDesc = document.querySelector('meta[name="description"]');
-      if (metaDesc) metaDesc.setAttribute('content', 'Jakub Barczyk — Tech Lead, IT Consultant, Engineering Trainer and University Lecturer based in Poland.');
+    document.title = t.title;
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', t.meta);
     }
-
-    // Render section contents (EN from templates, PL from cached default markup)
-    TEMPLATE_CONTAINERS.forEach(({ containerId, templateId }) => {
-      const container = document.getElementById(containerId);
-      if (!container) return;
-
-      if (lang === 'en') {
-        const tpl = document.getElementById(templateId);
-        if (tpl) {
-          container.innerHTML = '';
-          container.appendChild(tpl.content.cloneNode(true));
-        }
-      } else if (plContentCache[containerId]) {
-        container.innerHTML = plContentCache[containerId];
-      }
-    });
-
-    // Update static text elements
-    Object.entries(STATIC_TEXTS).forEach(([id, translations]) => {
-      const el = document.getElementById(id);
-      if (el && translations[lang]) {
-        el.textContent = translations[lang];
-      }
-    });
-
-    // Update form placeholders
-    Object.entries(PLACEHOLDERS).forEach(([id, translations]) => {
-      const el = document.getElementById(id);
-      if (el && translations[lang]) {
-        el.placeholder = translations[lang];
-      }
-    });
 
     // Update lang-btn aria-pressed states
     document.querySelectorAll('.lang-btn').forEach((button) => {
-      const active = button.dataset.lang === lang;
+      const active = button.dataset.lang === currentLang;
       button.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
-
-    // Re-observe any newly injected reveal elements
-    if (typeof revealObserver !== 'undefined') {
-      document.querySelectorAll('.reveal:not(.is-revealed)').forEach((el) => revealObserver.observe(el));
-      document.querySelectorAll('.reveal-stagger:not(.is-revealed)').forEach((el) => revealObserver.observe(el));
-    }
   };
 
   const header = document.querySelector('.site-header');
@@ -168,6 +105,13 @@
       navToggle.focus();
     }
   });
+
+  // Close menu if resized above mobile breakpoint
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && navMenu.classList.contains('is-open')) {
+      closeNav();
+    }
+  }, { passive: true });
 
   const sections  = document.querySelectorAll('main section[id]');
   const navLinks  = document.querySelectorAll('.nav-link');
@@ -230,7 +174,7 @@
         message: document.getElementById('contact-message'),
       };
 
-      // Simple client-side validation
+      const t = TRANSLATIONS[currentLang];
       let valid = true;
 
       Object.entries(fields).forEach(([key, field]) => {
@@ -243,19 +187,13 @@
           valid = false;
           field.setAttribute('aria-invalid', 'true');
           if (errorEl) {
-            errorEl.textContent =
-              currentLang === 'pl'
-                ? getErrorMessagePl(key)
-                : getErrorMessageEn(key);
+            errorEl.textContent = t[key] || t.fallback;
           }
-        } else if (key === 'email' && !isValidEmail(field.value)) {
+        } else if (field.type === 'email' && !field.checkValidity()) {
           valid = false;
           field.setAttribute('aria-invalid', 'true');
           if (errorEl) {
-            errorEl.textContent =
-              currentLang === 'pl'
-                ? 'Proszę podać poprawny adres e-mail.'
-                : 'Please enter a valid email address.';
+            errorEl.textContent = t.emailInvalid;
           }
         }
       });
@@ -275,7 +213,7 @@
       ].join('\n');
 
       const mailto =
-        `mailto:jakub@jakubbarczyk.pl` +
+        `mailto:jsbarczyk@gmail.com` +
         `?subject=${encodeURIComponent(fields.subject.value.trim())}` +
         `&body=${encodeURIComponent(body)}`;
 
@@ -284,10 +222,6 @@
       // Show success notice
       if (formSuccess) {
         formSuccess.removeAttribute('hidden');
-        const successText = document.getElementById('form-success-text');
-        if (successText && STATIC_TEXTS['form-success-text']) {
-          successText.textContent = STATIC_TEXTS['form-success-text'][currentLang];
-        }
       }
     });
 
@@ -300,27 +234,5 @@
       });
     });
   }
-
-  const isValidEmail = (value) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-
-  const getErrorMessageEn = (fieldKey) => {
-    const map = {
-      name:    'Please enter your name.',
-      email:   'Please enter your email.',
-      subject: 'Please enter a subject.',
-      message: 'Please enter a message.',
-    };
-    return map[fieldKey] || 'This field is required.';
-  };
-
-  const getErrorMessagePl = (fieldKey) => {
-    const map = {
-      name:    'Proszę podać imię i nazwisko.',
-      email:   'Proszę podać adres e-mail.',
-      subject: 'Proszę podać temat.',
-      message: 'Proszę wpisać wiadomość.',
-    };
-    return map[fieldKey] || 'To pole jest wymagane.';
-  };
 
 })();
