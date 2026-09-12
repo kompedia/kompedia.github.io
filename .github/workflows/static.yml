@@ -28,15 +28,11 @@ jobs:
         with:
           node-version: 'lts/*'
 
-      - name: Install Minification
-        run: |
-          npm install -g html-minifier-terser terser
-
       - name: Minify Assets
         run: |
-          terser scripts.js --compress --mangle -o scripts.js
-          npx lightningcss-cli --minify --targets "> 0.5%" styles.css -o styles.css
-          html-minifier-terser --collapse-whitespace --remove-comments --minify-js true --minify-css true index.html -o index.html
+          npx terser scripts.js --compress --mangle -o scripts.js
+          npx lightningcss-cli --minify --targets "> 1%" styles.css -o styles.css
+          npx html-minifier-terser --collapse-whitespace --remove-comments --minify-js true --minify-css true index.html -o index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v6
