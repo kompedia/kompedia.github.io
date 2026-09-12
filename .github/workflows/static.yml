@@ -20,24 +20,24 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v5
 
-      - name: Select Node.js
+      - name: Set up Node.js
         uses: actions/setup-node@v5
         with:
           node-version: 'lts/*'
 
-      - name: Minify Assets
+      - name: Minify assets
         run: |
           npx terser scripts.js --compress --mangle -o scripts.js
           npx lightningcss-cli --minify --targets "> 1%" styles.css -o styles.css
           npx html-minifier-terser --collapse-whitespace --remove-comments --minify-js true --minify-css true index.html -o index.html
 
-      - name: Setup Pages
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v6
 
-      - name: Upload Artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v5
         with:
           path: '.'
