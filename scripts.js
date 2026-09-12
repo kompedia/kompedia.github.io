@@ -212,10 +212,7 @@
         fields.message.value.trim(),
       ].join('\n');
 
-      const mailto =
-        `mailto:jsbarczyk@gmail.com` +
-        `?subject=${encodeURIComponent(fields.subject.value.trim())}` +
-        `&body=${encodeURIComponent(body)}`;
+      const mailto = `mailto:jsbarczyk@gmail.com?subject=${encodeURIComponent(fields.subject.value.trim())}&body=${encodeURIComponent(body)}`;
 
       window.location.href = mailto;
 
