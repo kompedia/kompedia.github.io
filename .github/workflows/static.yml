@@ -20,30 +20,29 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v5
 
-      - name: Set up Node.js
+      - name: Select Node.js
         uses: actions/setup-node@v5
         with:
           node-version: 'lts/*'
 
-      - name: Install Minification & Image Tools
+      - name: Install Minification
         run: |
-          npm install -g html-minifier-terser terser csso-cli
+          npm install -g html-minifier-terser terser
 
       - name: Minify Assets
         run: |
-          # Minify code assets in-place
           terser scripts.js --compress --mangle -o scripts.js
-          csso styles.css -o styles.css
+          npx lightningcss-cli --minify --targets "> 0.5%" styles.css -o styles.css
           html-minifier-terser --collapse-whitespace --remove-comments --minify-js true --minify-css true index.html -o index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v6
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+      - name: Upload Artifact
+        uses: actions/upload-pages-artifact@v5
         with:
           path: '.'
 
